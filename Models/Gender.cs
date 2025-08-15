@@ -1,0 +1,1 @@
+namespace EmployeeMgmtMvc.Models{ public enum Gender{ LakiLaki=1, Perempuan=2 } }

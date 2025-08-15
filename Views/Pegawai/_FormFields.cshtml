@@ -1,0 +1,14 @@
+@model EmployeeMgmtMvc.Models.Pegawai
+<div class="row g-3">
+  <div class="col-md-6"><label asp-for="Nama" class="form-label"></label><input asp-for="Nama" class="form-control" /><span asp-validation-for="Nama" class="text-danger"></span></div>
+  <div class="col-md-6"><label asp-for="NIK" class="form-label"></label><input asp-for="NIK" class="form-control" inputmode="numeric" /><span asp-validation-for="NIK" class="text-danger"></span></div>
+  <div class="col-md-6"><label asp-for="Email" class="form-label"></label><input asp-for="Email" class="form-control" /><span asp-validation-for="Email" class="text-danger"></span></div>
+  <div class="col-md-6"><label asp-for="Department" class="form-label"></label><input asp-for="Department" class="form-control" /><span asp-validation-for="Department" class="text-danger"></span></div>
+  <div class="col-md-6"><label asp-for="Phone" class="form-label"></label><input asp-for="Phone" class="form-control" /><span asp-validation-for="Phone" class="text-danger"></span></div>
+  <div class="col-md-8"><label asp-for="Alamat" class="form-label"></label><input asp-for="Alamat" class="form-control" /><span asp-validation-for="Alamat" class="text-danger"></span></div>
+  <div class="col-md-4"><label asp-for="JenisKelamin" class="form-label"></label><select asp-for="JenisKelamin" class="form-select" asp-items="Html.GetEnumSelectList<EmployeeMgmtMvc.Models.Gender>()"></select><span asp-validation-for="JenisKelamin" class="text-danger"></span></div>
+  <div class="col-md-4"><label asp-for="TanggalLahir" class="form-label"></label><input asp-for="TanggalLahir" class="form-control" type="date" /><span asp-validation-for="TanggalLahir" class="text-danger"></span></div>
+  <div class="col-md-4"><label asp-for="HireDate" class="form-label"></label><input asp-for="HireDate" class="form-control" type="date" /><span asp-validation-for="HireDate" class="text-danger"></span></div>
+  <div class="col-md-4"><label asp-for="Salary" class="form-label"></label><input asp-for="Salary" class="form-control" /><span asp-validation-for="Salary" class="text-danger"></span></div>
+  <div class="col-md-6"><label asp-for="NomorRekening" class="form-label"></label><input asp-for="NomorRekening" class="form-control" inputmode="numeric" /><span asp-validation-for="NomorRekening" class="text-danger"></span></div>
+</div>

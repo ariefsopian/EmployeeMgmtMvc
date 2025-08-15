@@ -1,0 +1,20 @@
+@model EmployeeMgmtMvc.Models.Pegawai
+@{ ViewData["Title"]="Detail Pegawai"; }
+<h2>@ViewData["Title"]</h2>
+<div class="card shadow-sm"><div class="card-body">
+<dl class="row">
+  <dt class="col-sm-3">Nama</dt><dd class="col-sm-9">@Model.Nama</dd>
+  <dt class="col-sm-3">NIK</dt><dd class="col-sm-9">@Model.NIK</dd>
+  <dt class="col-sm-3">Email</dt><dd class="col-sm-9">@Model.Email</dd>
+  <dt class="col-sm-3">Department</dt><dd class="col-sm-9">@Model.Department</dd>
+  <dt class="col-sm-3">Phone</dt><dd class="col-sm-9">@Model.Phone</dd>
+  <dt class="col-sm-3">Alamat</dt><dd class="col-sm-9">@Model.Alamat</dd>
+  <dt class="col-sm-3">Jenis Kelamin</dt><dd class="col-sm-9">@Model.JenisKelamin</dd>
+  <dt class="col-sm-3">Tanggal Lahir</dt><dd class="col-sm-9">@Model.TanggalLahir:yyyy-MM-dd</dd>
+  <dt class="col-sm-3">Tanggal Masuk</dt><dd class="col-sm-9">@Model.HireDate:yyyy-MM-dd</dd>
+  <dt class="col-sm-3">Gaji</dt><dd class="col-sm-9">@Model.Salary.ToString("N2")</dd>
+  <dt class="col-sm-3">Nomor Rekening</dt><dd class="col-sm-9">@Model.NomorRekening</dd>
+</dl>
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+<a asp-action="Index" class="btn btn-outline-secondary">Kembali</a>
+</div></div>

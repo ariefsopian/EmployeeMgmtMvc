@@ -1,0 +1,95 @@
+@model EmployeeMgmtMvc.Infrastructure.PaginatedList<EmployeeMgmtMvc.Models.Pegawai>
+@{ ViewData["Title"] = "Data Pegawai"; }
+<h1 class="mb-4">Data Pegawai</h1>
+
+<form method="get" class="row g-2 mb-3">
+  <div class="col-auto">
+    <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" class="form-control" placeholder="Cari nama/NIK/department/email">
+  </div>
+  <div class="col-auto">
+    <button class="btn btn-primary">Cari</button>
+    <a asp-action="Index" class="btn btn-outline-secondary">Reset</a>
+  </div>
+  <div class="col-auto">
+    @if (User.IsInRole("Admin")) { <a asp-action="Create" class="btn btn-success">Tambah Pegawai</a> }
+  </div>
+  <div class="col-auto">
+    <a class="btn btn-outline-success" asp-action="ExportExcel" asp-route-searchString="@(ViewData["CurrentFilter"])" asp-route-sortOrder="@(ViewData["CurrentSort"])">Export Excel</a>
+  </div>
+</form>
+
+<div class="card shadow-sm"><div class="card-body p-0"><div class="table-responsive">
+<table class="table table-striped table-hover align-middle mb-0">
+<thead>
+<tr>
+  <th><a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Nama</a></th>
+  <th>NIK</th>
+  <th>Email</th>
+  <th><a asp-action="Index" asp-route-sortOrder="@ViewData["DeptSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Department</a></th>
+  <th>Jenis Kelamin</th>
+  <th>Tgl Lahir</th>
+  <th><a asp-action="Index" asp-route-sortOrder="@ViewData["HireSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Tgl Masuk</a></th>
+  <th><a asp-action="Index" asp-route-sortOrder="@ViewData["SalarySortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Gaji</a></th>
+  <th class="text-end">Aksi</th>
+</tr>
+</thead>
+<tbody>
+@foreach (var item in Model)
+{
+<tr>
+  <td>@item.Nama</td><td>@item.NIK</td><td>@item.Email</td><td>@item.Department</td>
+  <td>@item.JenisKelamin</td><td>@item.TanggalLahir:yyyy-MM-dd</td><td>@item.HireDate:yyyy-MM-dd</td><td>@item.Salary.ToString("N2")</td>
+  <td class="text-end text-nowrap">
+    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Detail</a>
+    @if (User.IsInRole("Admin")) { <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Edit</a> <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Hapus</a> }
+  </td>
+</tr>
+}
+</tbody>
+</table>
+</div></div></div>
+
+<div class="d-flex justify-content-between align-items-center mt-3">
+  <div class="text-muted small">
+    @{
+        var total = Model.TotalCount;
+        var size = Model.PageSize;
+        var page = Model.PageIndex;
+        var start = total == 0 ? 0 : (page - 1) * size + 1;
+        var end = Math.Min(page * size, total);
+    }
+    Menampilkan data @start-@end dari total @total data
+  </div>
+  <nav aria-label="Paging">
+    <ul class="pagination mb-0">
+      @{
+          var current = Model.PageIndex;
+          var totalPages = Model.TotalPages;
+          var window = 3;
+          var startPage = Math.Max(1, current - window);
+          var endPage = Math.Min(totalPages, current + window);
+      }
+      <li class="page-item @(Model.HasPreviousPage ? "" : "disabled")">
+        <a class="page-link" asp-action="Index" asp-route-pageNumber="1" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">First</a>
+      </li>
+      <li class="page-item @(Model.HasPreviousPage ? "" : "disabled")">
+        <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Prev</a>
+      </li>
+      @if (startPage > 1) { <li class="page-item disabled"><span class="page-link">…</span></li> }
+      @for (var i = startPage; i <= endPage; i++)
+      {
+          if (i == Model.PageIndex) { <li class="page-item active"><span class="page-link">@i</span></li> }
+          else {
+              <li class="page-item"><a class="page-link" asp-action="Index" asp-route-pageNumber="@i" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">@i</a></li>
+          }
+      }
+      @if (endPage < Model.TotalPages) { <li class="page-item disabled"><span class="page-link">…</span></li> }
+      <li class="page-item @(Model.HasNextPage ? "" : "disabled")">
+        <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Next</a>
+      </li>
+      <li class="page-item @(Model.HasNextPage ? "" : "disabled")">
+        <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.TotalPages)" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Last</a>
+      </li>
+    </ul>
+  </nav>
+</div>

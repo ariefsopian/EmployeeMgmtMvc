@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\hp\\source\\repos\\EmployeeMgmtMvc_v1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7EDDC064-4B1F-4608-BA67-724DD37900E9}|EmployeeMgmtMvc.csproj|c:\\users\\hp\\source\\repos\\employeemgmtmvc_v1\\migrations\\20250815071731_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EDDC064-4B1F-4608-BA67-724DD37900E9}|EmployeeMgmtMvc.csproj|solutionrelative:migrations\\20250815071731_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20250815071731_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\hp\\source\\repos\\EmployeeMgmtMvc_v1\\Migrations\\20250815071731_InitialCreate.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250815071731_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\hp\\source\\repos\\EmployeeMgmtMvc_v1\\Migrations\\20250815071731_InitialCreate.cs",
+              "RelativeToolTip": "Migrations\\20250815071731_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-15T07:17:31.331Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

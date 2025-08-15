@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>@ViewData["Title"] - EmployeeMgmtMvc</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/flatly/bootstrap.min.css" />
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" asp-controller="Pegawai" asp-action="Index">EmployeeMgmtMvc</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link" asp-controller="Pegawai" asp-action="Index">Pegawai</a></li>
+      </ul>
+      <partial name="_LoginPartial" />
+    </div>
+  </div>
+</nav>
+<main class="container my-4">
+@RenderBody()
+</main>
+<footer class="border-top py-3 mt-5">
+  <div class="container text-center small text-muted">© Copyright by arso 2025. All Right Reserved</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

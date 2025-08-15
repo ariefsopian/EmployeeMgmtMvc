@@ -1,0 +1,12 @@
+@model EmployeeMgmtMvc.Models.Pegawai
+@{ ViewData["Title"]="Hapus Pegawai"; }
+<h2>@ViewData["Title"]</h2>
+<div class="alert alert-warning">Yakin ingin menghapus data pegawai ini?</div>
+<div class="card shadow-sm"><div class="card-body">
+<p><strong>@Model.Nama</strong> (@Model.Email) - @Model.Department</p>
+<form asp-action="Delete" method="post">
+  <input type="hidden" asp-for="Id" />
+  <button class="btn btn-danger">Hapus</button>
+  <a asp-action="Index" class="btn btn-outline-secondary">Batal</a>
+</form>
+</div></div>
